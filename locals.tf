@@ -1,6 +1,6 @@
 locals {
-  kms_aliases = {
-    for name, kms_alias in try(local.data, {}) :
-    name => kms_alias if var.create && try(data.create, true) && try(key.create, true)
+  data = {
+    for _id, _data in try(var.data, {}) :
+    _id => _data if var.create && try(_data.create, true)
   }
 }
