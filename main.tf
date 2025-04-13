@@ -1,5 +1,5 @@
 resource "aws_kms_alias" "this" {
-  for_each = local.data
+  for_each = local.resources
 
   name          = can(each.value.name_prefix) ? null : try(each.value.name, "alias/${each.key}")
   name_prefix   = try(each.value.name_prefix, null)

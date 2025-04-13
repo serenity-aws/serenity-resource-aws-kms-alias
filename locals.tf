@@ -1,6 +1,6 @@
 locals {
-  data = {
-    for _id, _data in try(var.data, {}) :
-    _id => _data if var.create && try(_data.create, true)
+  resources = {
+    for id, properties in try(var.resources, {}) :
+    id => properties if var.create && try(properties.create, true)
   }
 }
